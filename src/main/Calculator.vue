@@ -68,22 +68,29 @@ export default {
       }
     },
     addDigit(digit) {
-      if (digit === "." && this.displayValue.include(".")) {
-        return;
+      console.log('Está chegando até aqui');
+      if (digit === "." && this.displayValue.includes(".")) {
+        return
       }
 
-      const clearDisplay = this.displayValue === "0" || this.clearDisplay;
+      const clearDisplay = this.displayValue === "0" 
+        || this.clearDisplay;
       const currentValue = clearDisplay ? "" : this.displayValue;
       const displayValue = currentValue + digit;
 
       this.displayValue = displayValue;
       this.clearDisplay = false;
 
-      if (digit != ".") {
-        const i = this.current;
-        const newValue = parseFloat(displayValue);
-        this.values[i] = newValue;
-      }
+      // Opcao 1:
+      this.values[this.current] = displayValue;
+
+      // Opcao 2:
+      // if (digit != ".") {
+      //   const i = this.current;
+      //   const newValue = parseFloat(displayValue);
+      //   this.values[i] = newValue;
+      // }
+      // Para executar é: npm run server
     },
   },
 };
