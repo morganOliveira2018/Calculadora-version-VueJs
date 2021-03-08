@@ -1,12 +1,18 @@
 <template>
   <div class="display">
-      {{ value }}
+      {{ value | size }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ['value']
+  props: ['value'],
+  filters: {
+    size: function(valor) {
+      valor = parseFloat(valor).toFixed(2);
+      return `${valor}`
+    }
+  }
 }
 </script>
 
